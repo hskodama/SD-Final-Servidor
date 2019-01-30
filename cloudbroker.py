@@ -83,9 +83,9 @@ def liberar_vm():
     data = request.get_json()
     mongo.db['vm'].update_one(
         {
-            'vcpu':{'$gte': data['vcpu']},
-            'ram': {'$gte': data['ram']},
-            'hd': {'$gte': data['hd']},
+            'vcpu':data['vcpu'],
+            'ram':data['ram'],
+            'hd':data['hd'],
         }, {'$set': {'usando':'False', 'reserva':'0'}}
     )
 
