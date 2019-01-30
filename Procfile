@@ -1,1 +1,1 @@
-web: cloudbroker:app
+web: gunicorn cloudbroker:app
