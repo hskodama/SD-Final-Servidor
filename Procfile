@@ -1,1 +1,1 @@
-web: gunicorn cloudbroker:app
+web: python cloudbroker.py
