@@ -43,5 +43,5 @@ def search_vm():
 
     return jsonify({'Ok': True})
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run()
