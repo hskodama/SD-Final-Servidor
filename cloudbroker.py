@@ -7,9 +7,9 @@ app = Flask(__name__)
 app.config['MONGO_URI'] = "mongodb://admin:sd1234@ds159184.mlab.com:59184/sd"
 mongo = PyMongo(app)
 
-PROV_URL = 'http://127.0.0.1:5000/'
+PROV_URL = 'http://127.0.0.1:5001/'
 @app.route('/')
-def init():
+def main():
     return 'Welcome to SD'
 
 @app.route('/provedor/cadastrar/<pid>',methods=['POST'])
@@ -43,4 +43,5 @@ def search_vm():
 
     return jsonify({'Ok': True})
 
-
+if __name__ == '__main__':
+    app.run()
