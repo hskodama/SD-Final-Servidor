@@ -27,19 +27,34 @@ def init_provedor(pid):
 
     return jsonify({'Ok': True})
 
+@app.route('/provedor/search/<pid>', methods=['POST'])
+def search_provedor(pid):
+    data = request.get_json()
+    retorno = {}
+    busca = mongo.db['vm'].find(
+        {
+            'pid': [pid]
+        }
+    )
+
+    for resultados in busca:
+        json_data = json.dumps(resultados)
+
+    return json_data
+
 @app.route('/search',methods=['POST'])
 def search_vm():
     data = request.get_json()
-    teste = mongo.db['vm'].find(
+    busca = mongo.db['vm'].find(
         {
-            'vcpu':{ '$gte': data['vcpu']},
+            'vcpu':{'$gte': data['vcpu']},
             'ram': {'$gte': data['ram']},
             'hd': {'$gte': data['hd']},
             'usando': ['False']
         }
     )
-    for resultados in teste:
-        print("", resultados['_id'])
+    for resultados in busca:
+        print(resultados['_id'])
 
     return jsonify({'Ok': True})
 
